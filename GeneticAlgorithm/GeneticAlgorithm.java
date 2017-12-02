@@ -76,6 +76,10 @@ public class GeneticAlgorithm {
 	public int getScale() {
 		return this.scale;
 	}
+	
+	public int[] getBestPath(){
+		return this.BestPath;
+	}
 
 	// Initialization of GA, need a file path that stores the meta data.
 	// The test uses att48.tsp from
