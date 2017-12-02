@@ -1,6 +1,8 @@
 # GeneticAlgorithmTSP
 This application uses genetic algorithm to solve the Traveling Salesman Problem. The test data comes from http://comopt.ifi.uni-heidelberg.de/software/TSPLIB95/, and the best solution is known as 10628.
 
+The test file att48.tsp should be put at the root path of the project.
+
 (1) The city index (Vertex in the graph) is our gene in this solution, and the number of genes is 48.
 
 (2) An array of genes in this solution is our trait (the order in the trait is the path direction in the graph, order [1, 3, 5, 2] means the path in the graph is 1 -> 3 -> 5 -> 2), each trait includes city index from 1 to 48. 30 traits form a group.
