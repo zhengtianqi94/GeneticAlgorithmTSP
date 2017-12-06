@@ -5,6 +5,7 @@ import org.junit.Test;
 import GeneticAlgorithm.GeneticAlgorithm;
 import GeneticAlgorithm.Testing;
 import GeneticAlgorithm.Analyse;
+import GeneticAlgorithm.Evaluation;
 
 public class GATest {
 
@@ -32,6 +33,27 @@ public class GATest {
 		assert (ga.getScale() == 30);
 		assert (ga.getMatrix().length == 48);
 		assert (ga.getMatrix()[0].length == 48);
+	}
+
+	// Test Select BestGene Selection
+	@Test
+	public void testBestSelection() {
+		GeneticAlgorithm ga = new GeneticAlgorithm(scale, cityNum, GenerationTimes, CrossingPossibility,
+				MutationPossibility);
+		boolean flag = true;
+		try {
+			ga.init(filePath);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		ga.initGroup();
+		ga.selectBestGene();
+		for (int i = 0; i < ga.getScale(); i++) {
+			if (Evaluation.evaluate(ga.getInitial()[i], this.cityNum, ga.getMatrix()) < ga.getBestLength())
+				flag = false;
+		}
+		assert (flag == true);
 	}
 
 	// Test GeneralSolve
@@ -65,7 +87,7 @@ public class GATest {
 	// Test GeneralSolve result
 	@Test
 	public void testGeneralSolveResult() {
-		int[] GeneralResult = new int[100];
+		int[] GeneralResult = new int[1000];
 		GeneticAlgorithm ga = new GeneticAlgorithm(scale, cityNum, GenerationTimes, CrossingPossibility,
 				MutationPossibility);
 		try {
@@ -81,7 +103,7 @@ public class GATest {
 	// Test NoCrossingSolve result
 	@Test
 	public void testNoCrossingSolveResult() {
-		int[] NoCrossingResult = new int[100];
+		int[] NoCrossingResult = new int[1000];
 		GeneticAlgorithm ga = new GeneticAlgorithm(scale, cityNum, GenerationTimes, CrossingPossibility,
 				MutationPossibility);
 		try {

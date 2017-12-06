@@ -65,6 +65,14 @@ public class GeneticAlgorithm {
 		MutationPossibility = m;
 	}
 
+	public int getBestLength() {
+		return this.bestLength;
+	}
+
+	public int[][] getInitial() {
+		return this.InitialGeneration;
+	}
+
 	public int[][] getMatrix() {
 		return this.distance;
 	}
@@ -76,8 +84,8 @@ public class GeneticAlgorithm {
 	public int getScale() {
 		return this.scale;
 	}
-	
-	public int[] getBestPath(){
+
+	public int[] getBestPath() {
 		return this.BestPath;
 	}
 
@@ -143,7 +151,7 @@ public class GeneticAlgorithm {
 	// Initialize Group, the group is set to be 30
 	// Each group has a random order of gene without duplicate (city index in
 	// TSP)
-	private void initGroup() {
+	public void initGroup() {
 		int i, j, k;
 
 		// Group number = scale
@@ -167,7 +175,7 @@ public class GeneticAlgorithm {
 
 	// Find the most fit child individual gene (the nearest city in TSP), copy
 	// it to the next generation, need the individual fitness
-	private void selectBestGene() {
+	public void selectBestGene() {
 		int k, i, maxid;
 		int maxevaluation;
 
@@ -202,7 +210,7 @@ public class GeneticAlgorithm {
 	}
 
 	// Random selection, when generate next generation
-	private void select() {
+	public void select() {
 		int k, i, selectId;
 		float ran1;
 		for (k = 1; k < scale; k++) {
@@ -218,7 +226,7 @@ public class GeneticAlgorithm {
 	}
 
 	// Evolution, general order, save the best gene of father generation
-	private void GeneralEvolution() {
+	public void GeneralEvolution() {
 		int k;
 
 		selectBestGene();
@@ -256,7 +264,7 @@ public class GeneticAlgorithm {
 	}
 
 	// Evolution, no crossing mutation, save the best gene of father generation
-	private void NoCrossingEvolution() {
+	public void NoCrossingEvolution() {
 		int k;
 
 		selectBestGene();
